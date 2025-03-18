@@ -2,30 +2,32 @@
 
 Can you solve the maze? Fork this repository and edit the README to move the player (blue circle) from start to finish!
 
-<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="400" height="400" fill="#f5f5f5"/>
-  
-  <!-- Maze border -->
-  <rect x="50" y="50" width="300" height="300" stroke="black" stroke-width="2" fill="none"/>
-  
-  <!-- Maze walls -->
-  <line x1="100" y1="50" x2="100" y2="250" stroke="black" stroke-width="2"/>
-  <line x1="150" y1="100" x2="150" y2="350" stroke="black" stroke-width="2"/>
-  <line x1="200" y1="50" x2="200" y2="250" stroke="black" stroke-width="2"/>
-  <line x1="250" y1="150" x2="250" y2="350" stroke="black" stroke-width="2"/>
-  <line x1="50" y1="150" x2="200" y2="150" stroke="black" stroke-width="2"/>
-  <line x1="150" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
-  
-  <!-- Start point (green) -->
-  <circle cx="75" cy="75" r="15" fill="green"/>
-  
-  <!-- End point (red) -->
-  <circle cx="325" cy="325" r="15" fill="red"/>
-  
-  <!-- Player (blue) -->
-  <circle cx="75" cy="75" r="10" fill="blue"/>
-</svg>
+<div>
+  <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="400" fill="#f5f5f5"/>
+    
+    <!-- Maze border -->
+    <rect x="50" y="50" width="300" height="300" stroke="black" stroke-width="2" fill="none"/>
+    
+    <!-- Maze walls -->
+    <line x1="100" y1="50" x2="100" y2="250" stroke="black" stroke-width="2"/>
+    <line x1="150" y1="100" x2="150" y2="350" stroke="black" stroke-width="2"/>
+    <line x1="200" y1="50" x2="200" y2="250" stroke="black" stroke-width="2"/>
+    <line x1="250" y1="150" x2="250" y2="350" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="150" x2="200" y2="150" stroke="black" stroke-width="2"/>
+    <line x1="150" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
+    
+    <!-- Start point (green) -->
+    <circle cx="75" cy="75" r="15" fill="green"/>
+    
+    <!-- End point (red) -->
+    <circle cx="325" cy="325" r="15" fill="red"/>
+    
+    <!-- Player (blue) -->
+    <circle cx="75" cy="75" r="10" fill="blue"/>
+  </svg>
+</div>
 
 ## How to Play
 

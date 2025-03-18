@@ -1,0 +1,79 @@
+name: Game Actions
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-game-move:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.title, 'COLLECT_COIN') || contains(github.event.issue.title, 'FIGHT_MONSTER') || contains(github.event.issue.title, 'LEVEL_UP')
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Process game move
+        run: |
+          # Script to update README.md based on the issue title
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          PLAYER="${{ github.event.issue.user.login }}"
+          
+          # Read current score
+          CURRENT_SCORE=$(grep -o 'Current Score: [0-9]*' README.md | cut -d' ' -f3)
+          CURRENT_LEVEL=$(grep -o 'Level: [0-9]*' README.md | cut -d' ' -f2)
+          
+          # Update score based on action
+          if [[ "$ISSUE_TITLE" == "COLLECT_COIN" ]]; then
+            NEW_SCORE=$((CURRENT_SCORE + 10))
+            COMMENT="You collected a coin! +10 points"
+          elif [[ "$ISSUE_TITLE" == "FIGHT_MONSTER" ]]; then
+            NEW_SCORE=$((CURRENT_SCORE + 20))
+            COMMENT="You defeated a monster! +20 points"
+          elif [[ "$ISSUE_TITLE" == "LEVEL_UP" ]]; then
+            if [[ $CURRENT_SCORE -ge 50 ]]; then
+              CURRENT_LEVEL=$((CURRENT_LEVEL + 1))
+              NEW_SCORE=$((CURRENT_SCORE - 50))
+              COMMENT="Level up! You are now level $CURRENT_LEVEL"
+            else
+              NEW_SCORE=$CURRENT_SCORE
+              COMMENT="Not enough points to level up. You need 50 points."
+            fi
+          fi
+          
+          # Update README
+          sed -i "s/Current Score: [0-9]*/Current Score: $NEW_SCORE/" README.md
+          sed -i "s/Level: [0-9]*/Level: $CURRENT_LEVEL/" README.md
+          
+          # Update high scores (simplified)
+          # You would need a more complex script to properly maintain a high score table
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update game state" || echo "No changes to commit"
+          git push
+          
+      - name: Comment on issue
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ env.COMMENT }}'
+            })
+            
+      - name: Close issue
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.update({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed'
+            })

@@ -1,48 +1,128 @@
-# Markdown RPG - Issue-Based Adventure
+# Markdown Escape Room Challenge
 
-## Current Game Status
-**Character Level:** 1  
-**Health:** 100/100  
-**Gold:** 0  
-**Location:** Town Square
+You've been locked in a digital room. Solve the puzzles to escape!
 
-## How to Play
-1. Create an issue with a command to take an action
-2. Wait for the Game Master (repository owner) to process your action
-3. The README will be updated with the results
-4. Continue your adventure by creating new issues for actions
+## Room Description
 
-## Available Commands
-Create an issue with one of these titles:
+You're in a locked room with a computer showing this markdown file. Around the room, you see several objects:
 
-- `EXPLORE [location]` - Explore a new area
-- `ATTACK [target]` - Attack an enemy
-- `TALK TO [character]` - Speak with an NPC
-- `BUY [item]` - Purchase an item from a shop
-- `USE [item]` - Use an item from your inventory
-- `CHECK INVENTORY` - List your current items
-- `CHECK QUESTS` - View your active quests
+- A desk with a [drawer](#desk-drawer)
+- A [poster](#wall-poster) on the wall
+- A [bookshelf](#bookshelf) with several books
+- A [locked box](#locked-box) on the floor
+- A [door](#door) with a keypad
 
-## Current Location: Town Square
-From here, you can see:
-- The Blacksmith's Shop
-- The Tavern
-- The Town Gate
-- A Mysterious Alley
+## Objects
 
-## Active Quests
-- Find the missing blacksmith's hammer
+<details id="desk-drawer">
+<summary>Examine the desk drawer</summary>
 
-## Your Inventory
-- Small healing potion (restores 20 HP)
-- Rusty dagger (5 damage)
+The drawer contains:
+- A piece of paper with the number "735" written on it
+- A small key with a tag labeled "BOX"
+- A USB drive
 
-## Recent Events
-*Your adventure begins in the town square. Where will you go first?*
+<details>
+<summary>Read the paper more closely</summary>
 
-## Leaderboard
-| Player | Level | Achievements |
-|--------|-------|--------------|
-| @player1 | 3 | Defeated the Goblin King |
-| @player2 | 2 | Found the lost artifact |
+Below the number "735" you notice some faint text:
+"The password is the sum of all digits in all room codes"
+</details>
+
+<details>
+<summary>Examine the USB drive</summary>
+
+The USB drive has "BOOKSHELF - THIRD ROW, SECOND BOOK" etched on it.
+</details>
+
+</details>
+
+<details id="wall-poster">
+<summary>Look at the wall poster</summary>
+
+It's a periodic table of elements. Some elements are circled:
+- Potassium (K)
+- Erbium (Er)
+- Yttrium (Y)
+
+<details>
+<summary>Look behind the poster</summary>
+
+Written on the wall behind the poster is the number "219"
+</details>
+
+</details>
+
+<details id="bookshelf">
+<summary>Check the bookshelf</summary>
+
+The bookshelf has 5 rows of books.
+
+<details>
+<summary>Check the third row</summary>
+
+The third row contains these books:
+- "History of Computing"
+- "Digital Puzzles"
+- "Cryptography Basics"
+- "The Locked Room Mystery"
+
+</details>
+
+<details>
+<summary>Examine "Digital Puzzles" (second book in third row)</summary>
+
+Inside the book, you find a page with a highlighted message:
+"The box code is 'BOXKEY'"
+</details>
+
+</details>
+
+<details id="locked-box">
+<summary>Examine the locked box</summary>
+
+The box has a letter-based combination lock with 6 slots.
+
+<details>
+<summary>Try entering "BOXKEY"</summary>
+
+The box unlocks! Inside you find a piece of paper with the number "846" and a note that says "THE KEY IS IN THE ELEMENTS"
+</details>
+
+</details>
+
+<details id="door">
+<summary>Examine the door</summary>
+
+The door has a keypad that requires a 3-digit code.
+
+<details>
+<summary>Enter "735"</summary>
+
+Incorrect. The keypad flashes red.
+</details>
+
+<details>
+<summary>Enter "219"</summary>
+
+Incorrect. The keypad flashes red.
+</details>
+
+<details>
+<summary>Enter "846"</summary>
+
+Incorrect. The keypad flashes red.
+</details>
+
+<details>
+<summary>Enter "KEY"</summary>
+
+Success! The door opens. You've escaped!
+
+**CONGRATULATIONS!** You've completed the Markdown Escape Room!
+
+[Play Again?](#room-description)
+</details>
+
+</details>
 ```

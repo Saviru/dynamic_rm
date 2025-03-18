@@ -2,7 +2,7 @@
 
 Welcome to the README Adventure Game! Choose your path wisely.
 
-## Start Game
+## Game Start
 
 You find yourself in a dark forest. There are two paths ahead:
 
@@ -50,11 +50,10 @@ Congratulations! You've found the treasure and won the game!
 
 ![Treasure](https://raw.githubusercontent.com/yourusername/yourgamerepo/main/images/treasure.png)
 
-[Play Again?](#start-game)
+[Play Again?](#game-start)
 
 ## Game Over
 
 You have died. Better luck next time!
 
-[Try Again?](#start-game)
-```
+[Try Again?](#game-start)

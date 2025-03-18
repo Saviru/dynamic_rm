@@ -4,14 +4,21 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   process-game-move:
     runs-on: ubuntu-latest
     if: contains(github.event.issue.title, 'COLLECT_COIN') || contains(github.event.issue.title, 'FIGHT_MONSTER') || contains(github.event.issue.title, 'LEVEL_UP')
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
       - name: Process game move
+        id: process-move
         run: |
           # Script to update README.md based on the issue title
           ISSUE_TITLE="${{ github.event.issue.title }}"
@@ -43,8 +50,7 @@ jobs:
           sed -i "s/Current Score: [0-9]*/Current Score: $NEW_SCORE/" README.md
           sed -i "s/Level: [0-9]*/Level: $CURRENT_LEVEL/" README.md
           
-          # Update high scores (simplified)
-          # You would need a more complex script to properly maintain a high score table
+          echo "::set-output name=comment::$COMMENT"
           
       - name: Commit changes
         run: |
@@ -55,7 +61,7 @@ jobs:
           git push
           
       - name: Comment on issue
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -63,11 +69,11 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '${{ env.COMMENT }}'
+              body: '${{ steps.process-move.outputs.comment }}'
             })
             
       - name: Close issue
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |

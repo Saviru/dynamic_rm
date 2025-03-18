@@ -1,44 +1,52 @@
-# SVG Maze Game
 
-Can you solve the maze? Fork this repository and edit the README to move the player (blue circle) from start to finish!
+## 2. Tic-Tac-Toe
 
-<div>
-  <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-    <!-- Background -->
-    <rect width="400" height="400" fill="#f5f5f5"/>
-    
-    <!-- Maze border -->
-    <rect x="50" y="50" width="300" height="300" stroke="black" stroke-width="2" fill="none"/>
-    
-    <!-- Maze walls -->
-    <line x1="100" y1="50" x2="100" y2="250" stroke="black" stroke-width="2"/>
-    <line x1="150" y1="100" x2="150" y2="350" stroke="black" stroke-width="2"/>
-    <line x1="200" y1="50" x2="200" y2="250" stroke="black" stroke-width="2"/>
-    <line x1="250" y1="150" x2="250" y2="350" stroke="black" stroke-width="2"/>
-    <line x1="50" y1="150" x2="200" y2="150" stroke="black" stroke-width="2"/>
-    <line x1="150" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
-    
-    <!-- Start point (green) -->
-    <circle cx="75" cy="75" r="15" fill="green"/>
-    
-    <!-- End point (red) -->
-    <circle cx="325" cy="325" r="15" fill="red"/>
-    
-    <!-- Player (blue) -->
-    <circle cx="75" cy="75" r="10" fill="blue"/>
-  </svg>
-</div>
+A simple game of tic-tac-toe where players take turns editing the board.
+
+```markdown name=tic-tac-toe.md
+# SVG Tic-Tac-Toe
+
+Play Tic-Tac-Toe by editing this README! Fork the repo and make your moves.
+
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Game board -->
+  <rect width="300" height="300" fill="#f5f5f5"/>
+  
+  <!-- Grid lines -->
+  <line x1="100" y1="0" x2="100" y2="300" stroke="black" stroke-width="3"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="black" stroke-width="3"/>
+  <line x1="0" y1="100" x2="300" y2="100" stroke="black" stroke-width="3"/>
+  <line x1="0" y1="200" x2="300" y2="200" stroke="black" stroke-width="3"/>
+  
+  <!-- Moves - Add X's and O's here -->
+  <!-- Example X: <path d="M30,30 L70,70 M30,70 L70,30" stroke="blue" stroke-width="5"/> -->
+  <!-- Example O: <circle cx="150" cy="150" r="35" stroke="red" stroke-width="5" fill="none"/> -->
+  
+</svg>
+
+## Current Game State
+- Next turn: X
 
 ## How to Play
-
 1. Fork this repository
 2. Edit the README.md file
-3. Find the line with `<circle cx="75" cy="75" r="10" fill="blue"/>`
-4. Change the `cx` and `cy` values to move the blue circle
-5. Trace a valid path from the green circle (start) to the red circle (finish)
-6. Commit your changes to save your progress
+3. Add your move (X or O) to an empty cell
+4. For X: `<path d="M[x1],[y1] L[x2],[y2] M[x3],[y3] L[x4],[y4]" stroke="blue" stroke-width="5"/>`
+5. For O: `<circle cx="[x]" cy="[y]" r="35" stroke="red" stroke-width="5" fill="none"/>`
+6. Update the "Next turn" indicator
+7. Commit your changes
+8. Wait for your opponent to make their move
 
-## Rules
+## Cell Coordinates (center points)
+- Top Left: (50, 50)
+- Top Middle: (150, 50)
+- Top Right: (250, 50)
+- Middle Left: (50, 150)
+- Center: (150, 150)
+- Middle Right: (250, 150)
+- Bottom Left: (50, 250)
+- Bottom Middle: (150, 250)
+- Bottom Right: (250, 250)
 
-- The blue circle must not cross any black lines (walls)
-- Your goal is to reach the red circle from the green one
+## Game History
+- Game started by @Savirugive on 2025-03-18
